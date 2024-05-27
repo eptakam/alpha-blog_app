@@ -23,17 +23,27 @@ class ArticlesController < ApplicationController
 
   # POST /articles or /articles.json
   def create
-    @article = Article.new(article_params)
+    # render plain: params[:article]
+    @article = Article.new(params.require(:article).permit(:title, :description))  # This line of code will create a new article object with the title and description from the form.
+    @article.save
+    redirect_to article_path(@article)  # This line of code will redirect the user to the show page of the article that was just created.
 
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
+    # ou simplement:
+    # redirect_to @article  # This line of code will redirect the user to the show page of the article that was just created.
+
+    # render plain: @article.inspect  # This line of code will display the article object in the browser.
+
+    # @article = Article.new(article_params)
+
+    # respond_to do |format|
+    #   if @article.save
+    #     format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
+    #     format.json { render :show, status: :created, location: @article }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @article.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /articles/1 or /articles/1.json

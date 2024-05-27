@@ -1,5 +1,27 @@
-<h1>New article</h1>
+<h1>Create a new article</h1>
 
+<!--
+Note:
+  form_with is a new way to create forms in Rails 5.1
+  il fait normalement un appel AJAX pour soumettre le formulaire avec la methode POST.
+  mais on peut le forcer a faire un appel HTML en ajoutant local: true
+-->
+
+<%= form_with scope: :article, url: articles_path, local: true do |f| %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<!--
 <%= render "form", article: @article %>
 
 <br>
@@ -7,3 +29,4 @@
 <div>
   <%= link_to "Back to articles", articles_path %>
 </div>
+-->

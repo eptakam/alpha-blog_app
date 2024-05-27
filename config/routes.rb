@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get 'about', to: 'pages#about'
-  resources :articles, only: [:show, :index]  # This line of code will create all the routes for the articles resource.
+  resources :articles, only: [:show, :index, :new, :create]  # This line of code will create all the routes for the articles resource.
 end
