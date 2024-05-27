@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    #byebug # This will pause the execution of the code and open a console in the terminal.for the debugger to work, you need to have the 'byebug' gem installed in your Gemfile and run 'bundle install' in the terminal.
+    @article = Article.find(params[:id])  # @ : instance variable (accessible in the view(template))
   end
 
   # GET /articles/new
