@@ -83,6 +83,17 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
+    # on commence par recuperer l'article à supprimer via son ID
+    @article = Article.find(params[:id])
+
+    # ensuite, on supprime l'article
+    # mais comment passer l'id a url pour la suppression de l'article?
+    # comment specifier la methode de suppression de l'article vue que show action a le meme url (articles/:id => GET request) que destroy action (articles/:id => DELETE request)?
+    # ceci se fait au niveau de index.html.erb en utilisant la methode link_to helper de rails (index.html.erb a tous les articles et chaque article a un bouton pour le supprimer)
+    @article.destroy
+    redirect_to article_path  # redirect to the article list page
+    
+
     # @article.destroy!
 
     # respond_to do |format|

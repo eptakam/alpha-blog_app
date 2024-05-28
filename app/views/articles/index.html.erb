@@ -16,21 +16,16 @@
     <tr>
       <td><%= article.title %></td>
       <td><%= article.description %></td>
-      <td>Placeholder</td>
+      <td><%= link_to 'Show', article_path(article) %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'New', new_article_path %></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Delete', article_path(article), data: { "turbo-method": :delete } %></td>
+      <!-- 
+        articles_path(article) : me permet d'avoir l'id de l'article a supprimer 
+        data: { "turbo-method": :delete } : me permet de faire un appel AJAX pour supprimer l'article
+        de cette facon, je passe delete a l'url pour que le controller sache que c'est un delete action et non un show action
+      -->
     </tr>
     <% end %>
   </tbody>
 </table>
-
-<!--
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New article", new_article_path %>
--->
