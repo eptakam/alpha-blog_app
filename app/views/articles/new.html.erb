@@ -1,5 +1,14 @@
 <h1>Create a new article</h1>
 
+<% if @article.errors.any? %>
+  <h2>The following errors prevented the article from being to saved</h2>
+  <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <!--
 Note:
   form_with is a new way to create forms in Rails 5.1
