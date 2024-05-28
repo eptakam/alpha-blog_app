@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @article = Article.find(params[:id]) # ceci nous permet d'avoir l'article à modifier via son ID
   end
 
   # POST /articles or /articles.json
@@ -56,6 +57,19 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
+    # premierement, on recupere l'article à modifier
+    @article = Article.find(params[:id])
+
+    # ensuite, on met à jour l'article
+    if @article.update(article_params)
+      flash[:notice] = "Article was successfully updated."
+      redirect_to @article
+    else
+      flash[:alert] = "Something wrong!!!."
+      render 'edit', status: :unprocessable_entity
+    end
+
+
     # respond_to do |format|
     #   if @article.update(article_params)
     #     format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
