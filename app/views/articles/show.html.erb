@@ -2,21 +2,13 @@
 
 <h1>Showing article details</h1>
 
-<p><strong>Title: </strong><%= @article.title %></p>  
-<p><strong>Description: </strong><%= @article.description %></p>
-
 <!--
   <%=%> : evalue ce qui est entre les balises %> comme etant du code ruby
           le '=' permet d'afficher le resultat de l'evaluation
 -->
-
-<!--
-<%= render @article %>
-
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
-
-  <%= button_to "Destroy this article", @article, method: :delete %>
-</div>
--->
+<p><strong>Title: </strong><%= @article.title %></p>  
+<p><strong>Description: </strong><%= @article.description %></p>
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<!-- Ne pas oublier de specifier la methode delete pour le delete link -->
+<%= link_to 'Delete', article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %> |
+<%= link_to 'Return to articles listing', articles_path %>

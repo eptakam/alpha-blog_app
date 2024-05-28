@@ -7,7 +7,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Actions</th>
+      <th colspan=3>Actions</th>
     </tr>
   </thead>
 
@@ -17,9 +17,8 @@
       <td><%= article.title %></td>
       <td><%= article.description %></td>
       <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'New', new_article_path %></td>
-      <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Delete', article_path(article), data: { "turbo-method": :delete } %></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Edit', edit_article_path(article) %></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Delete', article_path(article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %></td>
       <!-- 
         articles_path(article) : me permet d'avoir l'id de l'article a supprimer 
         data: { "turbo-method": :delete } : me permet de faire un appel AJAX pour supprimer l'article
@@ -29,3 +28,8 @@
     <% end %>
   </tbody>
 </table>
+<p>
+  <%= link_to 'Create new article', new_article_path %> | <!-- link_to helper method to create a new article -->
+  <%= link_to 'Home page', root_path %> | <!-- link_to helper method to return to home page -->
+  <%= link_to 'About page', about_path %>
+</p>
