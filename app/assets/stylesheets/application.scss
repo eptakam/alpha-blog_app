@@ -13,4 +13,9 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+  
+// Import Bootstrap first
+@import "bootstrap";
+
+// Then import your custom styles (mes styles personnalisés)
+@import "custom";
