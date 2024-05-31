@@ -11,9 +11,8 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %> <!-- flash est un hash qui contient les messages d'alerte -->
-      <%= msg %>
-    <% end %>
+    <!-- messages est un 'partial' pour eviter la duplication de code -->
+    <%= render 'layouts/messages' %>
     <%= yield %>
   </body>
 </html>

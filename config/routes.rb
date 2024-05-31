@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   # resources :articles, only: [:show, :index, :new, :create, :edit, :update, :destroy]  # This line of code will create all the routes for the articles resource.
 
-  resources :articles
+  # resources :articles
 end

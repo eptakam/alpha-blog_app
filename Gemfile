@@ -10,6 +10,12 @@ gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
 
+# use jquery as the javascript library
+gem "jquery-rails"
+
+# Use SCSS for stylesheets
+gem "bootstrap"
+gem "sassc-rails"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"

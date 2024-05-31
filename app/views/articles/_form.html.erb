@@ -1,27 +1,24 @@
-<%= form_with(model: article) do |form| %>
-  <% if article.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+<!--
+Note:
+  form_with is a new way to create forms in Rails 5.1
+  il fait normalement un appel AJAX pour soumettre le formulaire avec la methode POST.
+  mais on peut le forcer a faire un appel HTML en ajoutant local: true
 
-      <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  il faut ajouter model: @article pour que le formulaire soit pre-rempli avec les valeurs de l'article a editer
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  @article est cette variable qui contient l'article a editer qui a ete recupere au niveau de la methode edit du controller
+-->
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+<%= form_with(model: @article, local: true) do |f| %>  
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>

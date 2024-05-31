@@ -1,38 +1,9 @@
 <h1>Edit article</h1>
 
-<% if @article.errors.any? %>
-  <h2>The following errors prevented the article from being to saved</h2>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'errors' %>
 
-<!--
-Note:
-  form_with is a new way to create forms in Rails 5.1
-  il fait normalement un appel AJAX pour soumettre le formulaire avec la methode POST.
-  mais on peut le forcer a faire un appel HTML en ajoutant local: true
+<%= render 'form' %>
 
-  il faut ajouter model: @article pour que le formulaire soit pre-rempli avec les valeurs de l'article a editer
-
-  @article est cette variable qui contient l'article a editer qui a ete recupere au niveau de la methode edit du controller
--->
-
-<%= form_with(model: @article, local: true) do |f| %>  
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
 <p>
   <%= link_to 'Cancel and return to articles listing', articles_path %> <!-- link_to helper method to return to articles listing page -->
 </p>

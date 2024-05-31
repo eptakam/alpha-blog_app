@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  # before_action :set_article, only: %i[ show edit update destroy ]
+  # appeler la methode set_article avant les actions show, edit, update et destroy
+  before_action :set_article, only: %i[ show edit update destroy ]
 
   # GET /articles or /articles.json
   def index
@@ -9,7 +10,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1 or /articles/1.json
   def show
     #byebug # This will pause the execution of the code and open a console in the terminal.for the debugger to work, you need to have the 'byebug' gem installed in your Gemfile and run 'bundle install' in the terminal.
-    @article = Article.find(params[:id])  # @ : instance variable (accessible in the view(template))
+    # @article = Article.find(params[:id])  # @ : instance variable (accessible in the view(template))
   end
 
   # GET /articles/new
@@ -22,7 +23,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @article = Article.find(params[:id]) # ceci nous permet d'avoir l'article à modifier via son ID
+    # @article = Article.find(params[:id]) # ceci nous permet d'avoir l'article à modifier via son ID
   end
 
   # POST /articles or /articles.json
@@ -58,7 +59,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
     # premierement, on recupere l'article à modifier
-    @article = Article.find(params[:id])
+    # @article = Article.find(params[:id])
 
     # ensuite, on met à jour l'article
     if @article.update(article_params)
@@ -84,7 +85,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1 or /articles/1.json
   def destroy
     # on commence par recuperer l'article à supprimer via son ID
-    @article = Article.find(params[:id])
+    # @article = Article.find(params[:id])
 
     # ensuite, on supprime l'article
     # mais comment passer l'id a url pour la suppression de l'article?
@@ -102,7 +103,9 @@ class ArticlesController < ApplicationController
     # end
   end
 
+  # DRY (Don't Repeat Yourself) principle
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
